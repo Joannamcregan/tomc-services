@@ -7,33 +7,27 @@
 */
 
 if( ! defined('ABSPATH') ) exit;
-//require_once plugin_dir_path(__FILE__) . 'inc/tomc-services-route.php';
+require_once plugin_dir_path(__FILE__) . 'inc/tomc-services-route.php';
 
 class TOMCServicesPlugin {
     function __construct() {
+        wp_localize_script('tomc-services-js', 'tomcBookorgData', array(
+            'root_url' => get_site_url()
+        ));
+
         add_action('activate_tomc-services/tomc-services.php', array($this, 'onActivate'));
         //add_action('init', array($this, 'onActivate'));
-        //add_action('init', array($this, 'registerScripts'));
-        //add_action('wp_enqueue_scripts', array($this, 'pluginFiles'));
+        add_action('wp_enqueue_scripts', array($this, 'pluginFiles'));
         add_filter('template_include', array($this, 'loadTemplate'), 99);
     }	
 
-    // wp_localize_script('tomc-services-js', 'tomcBookorgData', array(
-    //     'root_url' => get_site_url()
-    // ));
-
-
-    // function registerScripts(){
-    //     wp_register_style('tomc_services_styles', plugins_url('css/tomc-services-styles.css', __FILE__), false, '1.0', 'all');
-    // }
-
-    // function pluginFiles(){
-    //     wp_enqueue_style('tomc_services_styles');
-    //     wp_enqueue_script('tomc-services-js', plugin_dir_url(__FILE__) . '/build/index.js', array('jquery'), '1.0', true);
-    //     wp_localize_script('tomc-services-js', 'tomcServicesData', array(
-    //         'root_url' => get_site_url()
-    //     ));
-    // }
+    function pluginFiles(){
+        wp_enqueue_style('tomc_services_styles');
+        wp_enqueue_script('tomc-services-js', plugin_dir_url(__FILE__) . '/build/index.js', array('jquery'), '1.0', true);
+        wp_localize_script('tomc-services-js', 'tomcServicesData', array(
+            'root_url' => get_site_url()
+        ));
+    }
 
     function addServicesPage() {
         $services_page = array(

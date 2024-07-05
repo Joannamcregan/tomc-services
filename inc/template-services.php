@@ -10,7 +10,12 @@ get_header();
 ?><main>
     <div class="banner"><h1 class="centered-text">Services</h1><h2 class="centered-text">by creators, for creators</h2></div>
     <br>
-    <input type="text" id = "service-search-term" placeholder="search for a service">
+    <div class="service-search-term-div">
+        <input type="text" id = "service-search-term" placeholder="What do you need help with?">
+        <button id="service-search-button">search</button>
+        <p class="hidden red-text centered-text" id="service-search-no-term-message">Please enter a search term.</p>
+    </div>
+    <div id="tomc-service-results" class="generic-content">
     <?php $query = 'select posts.id as product_url, posts.post_title, posts.post_content, posts.post_date, price.meta_value as price
         from %i posts
         join %i tr on posts.id = tr.object_id
@@ -27,7 +32,6 @@ get_header();
         $results = $wpdb->get_results($wpdb->prepare($query, $posts_table, $term_relationships_table, $term_taxonomy_table, $terms_table, $postmeta_table), ARRAY_A);
         if (($results) && count($results) > 0){
             ?><h2 class="centered-text">Newly Added Services</h2>
-            <div id="tomc-service-results" class="generic-content">
             <?php for ($i = 0; $i < count($results); $i++){
                 ?><div class="tomc-service-result">
                     <h3><a class="gray-link" href="<?php echo get_permalink($results[$i]['product_url']) ?>"><?php echo $results[$i]['post_title']; ?></a><?php echo ' $' . $results[$i]['price']; ?></h3>
@@ -36,11 +40,11 @@ get_header();
                 <br>
                 <div class="orange-yellow-line-break"></div>
                 <br>
-            <?php }            
-            ?></div>
-        <?php }
-        ?><p class="centered-text"><em>Want to offer your creative services?</em></p>
-        <p class="centered-text"><a href="<?php echo esc_url(site_url('/own'));?>">Join our cooperative</a> as a creator-member!</p>
+            <?php }    
+        }        
+        ?></div>
+        <p class="centered-text"><em>Want to offer your creative services?</em></p>
+        <p class="centered-text"><em><a href="<?php echo esc_url(site_url('/own'));?>">Join our cooperative</a> as a creator-member!</em></p>
 </main>
 
 <?php get_footer(); ?>
