@@ -27,9 +27,21 @@ class ServiceSearch {
                 success: (response) => {
                     this.serviceListingsDiv.html('');
                     if (response.length > 0){
-                        console.log('we have results!');
+                        for (let i = 0; i < response.length; i++){
+                            let newHeading = $('<h3/>').addClass('gray-link');
+                            let newLink = $('<a/>').attr('href', response[i]['product_url']).html(response[i]['post_title']);
+                            newHeading.append(newLink);
+                            let newSpan = $('<span/>').html(' $' + response[i]['price']);
+                            newHeading.append(newSpan);
+                            this.serviceListingsDiv.append(newHeading);
+                            let newText = $('<div/>').addClass('prewrap').html(response[i]['post_content']);
+                            this.serviceListingsDiv.append(newText);
+                            let lines = $('<div/>').addClass('orange-yellow-line-break-30');
+                            this.serviceListingsDiv.append(lines);
+                        }
                     } else {
-                        
+                        let newP = $('<p/>').addClass('centered-text').html("Sorry, we don't currently have any listings that match your search term. Feel free to spread the word about our cooperative to your favorite editors, cover artists, and other folks who offer services to authors!");
+                        this.serviceListingsDiv.append(newP);
                     }
                 },
                 error: (response) => {

@@ -43,8 +43,7 @@ get_header();
             <?php }    
         }        
         ?></div>
-        <p class="centered-text"><em>Want to offer your creative services?</em></p>
-        <p class="centered-text"><em><a href="<?php echo esc_url(site_url('/own'));?>">Join our cooperative</a> as a creator-member!</em></p>
+        <p class="centered-text"><em>Want to offer your creative services? <a href="<?php echo esc_url(site_url('/own'));?>">Join our cooperative</a> as a creator-member!</em></p>
 </main>
 
 <?php get_footer(); ?>

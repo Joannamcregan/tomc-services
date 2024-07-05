@@ -40,8 +40,22 @@ class ServiceSearch {
         success: response => {
           this.serviceListingsDiv.html('');
           if (response.length > 0) {
-            console.log('we have results!');
-          } else {}
+            for (let i = 0; i < response.length; i++) {
+              let newHeading = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<h3/>').addClass('gray-link');
+              let newLink = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<a/>').attr('href', response[i]['product_url']).html(response[i]['post_title']);
+              newHeading.append(newLink);
+              let newSpan = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<span/>').html(' $' + response[i]['price']);
+              newHeading.append(newSpan);
+              this.serviceListingsDiv.append(newHeading);
+              let newText = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div/>').addClass('prewrap').html(response[i]['post_content']);
+              this.serviceListingsDiv.append(newText);
+              let lines = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<div/>').addClass('orange-yellow-line-break-30');
+              this.serviceListingsDiv.append(lines);
+            }
+          } else {
+            let newP = jquery__WEBPACK_IMPORTED_MODULE_0___default()('<p/>').addClass('centered-text').html("Sorry, we don't currently have any listings that match your search term. Feel free to spread the word about our cooperative to your favorite editors, cover artists, and other folks who offer services to authors!");
+            this.serviceListingsDiv.append(newP);
+          }
         },
         error: response => {
           console.log(response);
