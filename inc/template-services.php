@@ -10,6 +10,15 @@ get_header();
 ?><main>
     <div class="banner"><h1 class="centered-text">Services</h1><h2 class="centered-text">by creators, for creators</h2></div>
     <br>
+    <div class="generic-content">
+        <div class="left-accent-wrapper-orange">
+            <div class="left-accent-wrapper-yellow">
+                <p><em>Proudly offered by TOMC:</em></p>
+                <h3><a class="gray-link" href="<?php echo esc_url(site_url('/product/isbn'));?>">ISBN Registration</a></h3>
+                <p><strong>$5 for members and $15 for non-members</strong></p>
+            </div>
+        </div>
+    </div>
     <div class="service-search-term-div">
         <input type="text" id = "service-search-term" placeholder="What do you need help with?">
         <button id="service-search-button">search</button>
@@ -31,7 +40,7 @@ get_header();
         limit 10;';
         $results = $wpdb->get_results($wpdb->prepare($query, $posts_table, $term_relationships_table, $term_taxonomy_table, $terms_table, $postmeta_table), ARRAY_A);
         if (($results) && count($results) > 0){
-            ?><h2 class="centered-text">Newly Added Services</h2>
+            ?><h2 class="centered-text">Our Members' Newest Services</h2>
             <?php for ($i = 0; $i < count($results); $i++){
                 ?><div class="tomc-service-result">
                     <h3><a class="gray-link" href="<?php echo get_permalink($results[$i]['product_url']) ?>"><?php echo $results[$i]['post_title']; ?></a><?php echo ' $' . $results[$i]['price']; ?></h3>
