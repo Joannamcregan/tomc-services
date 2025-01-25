@@ -14,7 +14,7 @@ get_header();
         <div class="left-accent-wrapper-orange">
             <div class="left-accent-wrapper-yellow">
                 <p><em>Proudly offered by TOMC:</em></p>
-                <h3><a class="gray-link" href="<?php echo esc_url(site_url('/product/isbn'));?>">ISBN Registration</a></h3>
+                <h3><a class="gray-link" href="<?php echo esc_url(site_url('/product/isbn-registration'));?>">ISBN Registration</a></h3>
                 <p><strong>$5 for members and $15 for non-members</strong></p>
             </div>
         </div>
