@@ -20,7 +20,7 @@ get_header();
         </div>
     </div>
     <div class="service-search-term-div">
-        <input type="text" id = "service-search-term" placeholder="What do you need help with?">
+        <input type="text" id="service-search-term" placeholder="What do you need help with?">
         <button id="service-search-button">search</button>
         <p class="hidden red-text centered-text" id="service-search-no-term-message">Please enter a search term.</p>
     </div>
@@ -52,7 +52,7 @@ get_header();
             <?php }    
         }        
         ?></div>
-        <p class="centered-text"><em>Want to offer your creative services? <a href="<?php echo esc_url(site_url('/own'));?>">Join our cooperative</a> as a creator-member!</em></p>
+        <p class="centered-text"><em>Want to offer your creative services? <a href="<?php echo esc_url(site_url('/sell-your-creations'));?>">Learn how</a>.</em></p>
 </main>
 
 <?php get_footer(); ?>
