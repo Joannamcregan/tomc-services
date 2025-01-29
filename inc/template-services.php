@@ -52,7 +52,7 @@ get_header();
             <?php }    
         }        
         ?></div>
-        <p class="centered-text"><em>Want to offer your creative services? <a href="<?php echo esc_url(site_url('/sell-your-creations'));?>">Learn how</a>.</em></p>
+        <p class="centered-text"><em>Want to offer your creative services? <a href="<?php echo esc_url(site_url('/options-to-offer-your-work'));?>">Learn how</a>.</em></p>
 </main>
 
 <?php get_footer(); ?>
