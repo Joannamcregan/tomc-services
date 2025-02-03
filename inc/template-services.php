@@ -11,14 +11,16 @@ get_header();
     <div class="banner"><h1 class="centered-text">Services</h1><h2 class="centered-text">by creators, for creators</h2></div>
     <br>
     <div class="generic-content">
-        <div class="left-accent-wrapper-orange">
-            <div class="left-accent-wrapper-yellow">
-                <p><em>Proudly offered by TOMC:</em></p>
-                <h3><a class="gray-link" href="<?php echo esc_url(site_url('/product/isbn-registration'));?>">ISBN Registration</a></h3>
-                <p><strong>$5 for members and $15 for non-members</strong></p>
+        <?php if (is_user_logged_in()) {
+            ?><div class="left-accent-wrapper-orange">
+                <div class="left-accent-wrapper-yellow">
+                    <p><em>Proudly offered by TOMC:</em></p>
+                    <h3><a class="gray-link" href="<?php echo esc_url(site_url('/product/isbn-registration'));?>">ISBN Registration</a></h3>
+                    <p><strong>$5 for members and $15 for non-members</strong></p>
+                </div>
             </div>
-        </div>
-    </div>
+        <?php }
+    ?></div>
     <div class="service-search-term-div">
         <input type="text" id="service-search-term" placeholder="What do you need help with?">
         <button id="service-search-button">search</button>
